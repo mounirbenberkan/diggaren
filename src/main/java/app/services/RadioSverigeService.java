@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.time.Instant;
 
 public class RadioSverigeService {
-    String URL="https://api.sr.se/api/v2/playlists/rightnow?channelid=2576&format=json";
-    Utility util ;
-    JsonObject json;
+    private Utility util ;
+    private JsonObject json;
     private TrackInfo currentTrack;
     private TrackInfo prevTrack;
+
     public RadioSverigeService() {
         this.util = new Utility();
             json= new JsonObject();
