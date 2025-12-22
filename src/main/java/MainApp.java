@@ -12,24 +12,20 @@ public class MainApp {
         RadioSverigeService radioSverigeService = new RadioSverigeService();
         SpotifyService spotifyService = new SpotifyService();
         SongService songService= new SongService(radioSverigeService, spotifyService);
-        Javalin app = Javalin.create(config->{
-            config.staticFiles.add("/static", Location.CLASSPATH);
-
-            config.plugins.enableCors(cors -> {
-                cors.add(it -> {
-                    it.anyHost();
-                });
-            });
-
-            JavalinPebble.init();
+        Javalin app = Javalin.create(config->{})
+                        .before(ctx->{
+            ctx.header("Access-Control-Allow-Origin", "*");
+            ctx.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+            ctx.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
         }).start(5500);
         app.get("/track/current/{chanelId}", ctx -> {
             String chanelId = ctx.pathParam("chanelId");
             ctx.json(songService.getTrackWithSpotifyLink(chanelId,true));
         });
-        app.post("/track/previous/{chanelId}", ctx -> {
+        app.get("/track/previous/{chanelId}", ctx -> {
             String chanelId = ctx.pathParam("chanelId");
             ctx.json(songService.getTrackWithSpotifyLink(chanelId,false));
         });
+        System.out.println("API running on http://localhost:5500");
     }
 }

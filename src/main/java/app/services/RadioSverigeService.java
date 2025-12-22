@@ -80,7 +80,6 @@ public class RadioSverigeService {
         prevTrack.setArtist(artist);
         prevTrack.setTitle(title);
         prevTrack.setPalyedAt(startTime);
-        prevTrack.setChanel(getChanelName(artist));
         prevTrack.setChanel(getChanelName(channelId));
         return prevTrack;
     }
