@@ -50,7 +50,6 @@ public class SpotifyService {
                 String trackName =  track.get("name").getAsString();
                 String SpotifyUrl = track.getAsJsonObject("external_urls").get("spotify").getAsString();
                 System.out.println(trackName);
-                System.out.println(SpotifyUrl);
                 System.out.println("________________");
 
             }
