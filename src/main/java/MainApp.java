@@ -1,6 +1,8 @@
 import app.services.RadioSverigeService;
 import app.services.SongService;
 import app.services.SpotifyService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import io.javalin.json.JavalinJackson;
@@ -13,8 +15,12 @@ public class MainApp {
         RadioSverigeService radioSverigeService = new RadioSverigeService();
         SpotifyService spotifyService = new SpotifyService();
         SongService songService= new SongService(radioSverigeService, spotifyService);
-        Javalin app = Javalin.create(config->{})
-                        .before(ctx->{
+        Javalin app = Javalin.create(config->{
+            ObjectMapper mapper = new ObjectMapper();
+                    mapper.registerModule(new JavaTimeModule());
+
+                    config.jsonMapper(new JavalinJackson(mapper));
+                }).before(ctx->{
             ctx.header("Access-Control-Allow-Origin", "*");
             ctx.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
