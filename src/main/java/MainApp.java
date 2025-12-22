@@ -3,6 +3,7 @@ import app.services.SongService;
 import app.services.SpotifyService;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
+import io.javalin.json.JavalinJackson;
 import io.javalin.rendering.template.JavalinPebble;
 
 public class MainApp {
