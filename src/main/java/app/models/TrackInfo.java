@@ -6,14 +6,14 @@ public class TrackInfo {
     private String title;
     private String artist;
     private Instant palyedAt;
-    private String[] spotifyLink;
+    private String spotifyLink;
     private String chanel;
 
-    public String [] getSpotifyLink() {
+    public String getSpotifyLink() {
         return spotifyLink;
     }
 
-    public void setSpotifyLink(String[] spotifyLink) {
+    public void setSpotifyLink(String spotifyLink) {
         this.spotifyLink = spotifyLink;
     }
 
