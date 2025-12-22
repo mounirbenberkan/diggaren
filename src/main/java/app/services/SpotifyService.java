@@ -22,21 +22,24 @@ public class SpotifyService {
     private Instant accessTokenExpires;
     private final String baseUrl = "https://api.spotify.com/v1/search";
 
-    public void searchArtist(String query) throws InterruptedException, IOException, InterruptedException {
+    public String searchArtist(String query) throws InterruptedException, IOException, InterruptedException {
         JsonArray items = search(query, "artist");
+        String spotifyURL = null;
         if(!items.isEmpty()){
             for(JsonElement item : items){
                 JsonObject artist = item.getAsJsonObject();
                 String artistName =  artist.get("name").getAsString();
-                String SpotifyUrl = artist.getAsJsonObject("external_urls").get("spotify").getAsString();
+                spotifyURL = artist.getAsJsonObject("external_urls").get("spotify").getAsString();
                 System.out.println(artistName);
-                System.out.println(SpotifyUrl);
+                System.out.println(spotifyURL);
                 System.out.println("________________");
+                break;
 
             }
         }else{
             System.out.println("No artist found");
         }
+        return spotifyURL;
     }
 
     public void searchTrack(String query) throws InterruptedException, IOException, InterruptedException {
