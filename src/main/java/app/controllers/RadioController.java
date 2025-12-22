@@ -12,7 +12,7 @@ public class RadioController {
     private SpotifyService spotifyService;
     private Javalin app;
     
-    public RadioController(Javalin app,RadioSverigeService radioSverigeService, SpotifyService spotifyService) {
+  /**  public RadioController(Javalin app,RadioSverigeService radioSverigeService, SpotifyService spotifyService) {
         this.app = app;
         this.radioSverigeService = radioSverigeService;
         this.spotifyService = spotifyService;
@@ -25,5 +25,5 @@ public class RadioController {
         }else {
             ctx.status(404).result("Track not found");
         }
-    }
+    }*/
 }
