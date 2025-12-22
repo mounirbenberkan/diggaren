@@ -12,14 +12,11 @@ import java.time.Instant;
 public class RadioSverigeService {
     private Utility util ;
     private JsonObject json;
-    private TrackInfo currentTrack;
-    private TrackInfo prevTrack;
 
     public RadioSverigeService() {
         this.util = new Utility();
             json= new JsonObject();
-        this.currentTrack = new TrackInfo();
-        this.prevTrack = new TrackInfo();
+
     }
     public String getChanelName(String channelId) {
         String chanelsURL="https://api.sr.se/api/v2/channels?format=json";
@@ -57,6 +54,7 @@ public class RadioSverigeService {
         String rawStartTime=song.get("starttimeutc").getAsString();
         String millisStr = rawStartTime.replaceAll("/Date\\((\\d+)\\)/", "$1");
         Instant startTime = Instant.ofEpochMilli(Long.parseLong(millisStr));
+        TrackInfo currentTrack=new TrackInfo();
         currentTrack.setArtist(artist);
         currentTrack.setTitle(title);
         currentTrack.setPalyedAt(startTime);
@@ -78,6 +76,7 @@ public class RadioSverigeService {
         String rawStartTime=previousSong.get("starttimeutc").getAsString();
         String millisStr = rawStartTime.replaceAll("/Date\\((\\d+)\\)/", "$1");
         Instant startTime = Instant.ofEpochMilli(Long.parseLong(millisStr));
+        TrackInfo prevTrack=new TrackInfo();
         prevTrack.setArtist(artist);
         prevTrack.setTitle(title);
         prevTrack.setPalyedAt(startTime);
