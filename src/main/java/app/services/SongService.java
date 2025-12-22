@@ -18,7 +18,7 @@ public class SongService {
         if(current) {
             song = sr.getCurrentTrack(channel);
         }else{
-            //song = sr.getPreviousSong(channel);
+            song = sr.getPreviousSong(channel);
         }
 
         if(song != null){
