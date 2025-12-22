@@ -72,6 +72,7 @@ public class SpotifyService {
             JsonObject results = json.getAsJsonObject(type + "s");
             return results.getAsJsonArray("items");
         }else{
+            System.out.println("Error: " + response.statusCode() + " " + response.body());
             return new JsonArray();
         }
     }
