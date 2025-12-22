@@ -16,8 +16,11 @@ public class RadioController {
         this.app = app;
         this.radioSverigeService = radioSverigeService;
         this.spotifyService = spotifyService;
+        app.get("/track/{chanelId}", this::getDefaultTrack);
+
     }
     public void getDefaultTrack(Context ctx) {
+        String chanelId= ctx.pathParam("chanelId");
         TrackInfo track = radioSverigeService.getCurrentTrack("");
         String trackName= track.getArtist();
         if (track != null) {
