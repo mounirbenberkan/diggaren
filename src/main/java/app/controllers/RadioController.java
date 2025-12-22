@@ -17,7 +17,7 @@ public class RadioController {
         this.radioSverigeService = radioSverigeService;
         this.spotifyService = spotifyService;
     }
-    public void getDefaultTrack(Context ctx, String chanelId) {
+    public void getDefaultTrack(Context ctx) {
         TrackInfo track = radioSverigeService.getCurrentTrack("");
         String trackName= track.getArtist();
         if (track != null) {
