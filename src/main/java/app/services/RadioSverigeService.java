@@ -48,6 +48,10 @@ public class RadioSverigeService {
         }
         JsonObject playlist= json.getAsJsonObject("playlist");
         JsonObject song = playlist.getAsJsonObject("song");
+        if(song== null){
+            System.out.println("There is no song in playlist");
+            return null;
+        }
         String title=song.get("title").getAsString();
         String artist=song.get("artist").getAsString();
         String rawStartTime=song.get("starttimeutc").getAsString();
@@ -85,8 +89,6 @@ public class RadioSverigeService {
 
     public static void main(String[] args){
       RadioSverigeService rs = new RadioSverigeService();
-      TrackInfo currentTrack = rs.getCurrentTrack("163") ;
-        System.out.println(currentTrack.toString());
       TrackInfo prevTrack = rs.getPreviousSong("163");
       System.out.println(prevTrack.toString());
     }

@@ -24,7 +24,7 @@ public class MainApp {
             ctx.header("Access-Control-Allow-Origin", "*");
             ctx.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-        }).start(5500);
+        }).start(7070);
         app.get("/track/current/{chanelId}", ctx -> {
             String chanelId = ctx.pathParam("chanelId");
             ctx.json(songService.getTrackWithSpotifyLink(chanelId,true));
@@ -33,6 +33,6 @@ public class MainApp {
             String chanelId = ctx.pathParam("chanelId");
             ctx.json(songService.getTrackWithSpotifyLink(chanelId,false));
         });
-        System.out.println("API running on http://localhost:5500");
+        System.out.println("API running on http://localhost:7070");
     }
 }
