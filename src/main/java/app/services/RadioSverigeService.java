@@ -60,7 +60,7 @@ public class RadioSverigeService {
         TrackInfo currentTrack=new TrackInfo();
         currentTrack.setArtist(artist);
         currentTrack.setTitle(title);
-        currentTrack.setPalyedAt(startTime);
+        currentTrack.setPlayedAt(startTime);
         currentTrack.setChanel(getChanelName(channelId));
         return currentTrack;
     }
@@ -82,7 +82,7 @@ public class RadioSverigeService {
         TrackInfo prevTrack=new TrackInfo();
         prevTrack.setArtist(artist);
         prevTrack.setTitle(title);
-        prevTrack.setPalyedAt(startTime);
+        prevTrack.setPlayedAt(startTime);
         prevTrack.setChanel(getChanelName(channelId));
         return prevTrack;
     }

@@ -5,7 +5,7 @@ import java.time.Instant;
 public class TrackInfo {
     private String title;
     private String artist;
-    private Instant palyedAt;
+    private Instant playedAt;
     private String spotifyLink;
     private String chanel;
 
@@ -34,12 +34,12 @@ public class TrackInfo {
         this.artist = artist;
     }
 
-    public Instant getPalyedAt() {
-        return palyedAt;
+    public Instant getPlayedAt() {
+        return playedAt;
     }
 
-    public void setPalyedAt(Instant palyedAt) {
-        this.palyedAt = palyedAt;
+    public void setPlayedAt(Instant playedAt) {
+        this.playedAt = playedAt;
     }
 
     public String getChanel() {
@@ -50,7 +50,7 @@ public class TrackInfo {
         this.chanel = chanel;
     }
     public String toString() {
-        return title+" "+artist+" "+palyedAt+" "+chanel;
+        return title+" "+artist+" "+ playedAt +" "+chanel;
     }
 
 
