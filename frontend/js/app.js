@@ -3,7 +3,6 @@ console.log("Diggaren frontend startad");
 // Test så vi ser att JavaScript fungerar
 const titel = document.querySelector("h1");
 titel.style.color = "green";
-// koden är inte testad
 const baseURL= "http://localhost:7070";
 document.addEventListener("DOMContentLoaded",main);
 
@@ -27,7 +26,16 @@ async function updateSong(selectedChanel){
     let artist= document.querySelector("#artist");
     artist.innerHTML=songInfo.artist;
     let time= document.querySelector("#time");
-    time.innerHTML=songInfo.playedAt;
+    if(songInfo.playedAt){
+        const dataObject= new Date(songInfo.playedAt*1000);
+        const formattedTime= dataObject.toLocaleTimeString('sv-SE',{
+            hour:'2-digit',
+            minute: '2-digit'
+        })
+        time.innerHTML=formattedTime;
+    }else{
+        time.innerHTML="--:--"
+    }
     updateSpotifyLink(songInfo.spotifyLink);
 }
 
