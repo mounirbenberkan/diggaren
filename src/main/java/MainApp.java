@@ -1,3 +1,4 @@
+import app.models.TrackInfo;
 import app.services.RadioSverigeService;
 import app.services.SongService;
 import app.services.SpotifyService;
@@ -25,13 +26,26 @@ public class MainApp {
             ctx.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
         }).start(7070);
+        app.get("/", ctx -> {
+            ctx.result("Song API is running");
+        });
         app.get("/track/current/{chanelId}", ctx -> {
             String chanelId = ctx.pathParam("chanelId");
-            ctx.json(songService.getTrackWithSpotifyLink(chanelId,true));
+            TrackInfo track = songService.getTrackWithSpotifyLink(chanelId,true);
+            if (track == null) {
+                ctx.status(404);
+                return;
+            }
+            ctx.json(track);
         });
         app.get("/track/previous/{chanelId}", ctx -> {
             String chanelId = ctx.pathParam("chanelId");
-            ctx.json(songService.getTrackWithSpotifyLink(chanelId,false));
+            TrackInfo track = songService.getTrackWithSpotifyLink(chanelId,false);
+            if (track == null) {
+                ctx.status(404);
+                return;
+            }
+            ctx.json(track);
         });
         System.out.println("API running on http://localhost:7070");
     }
