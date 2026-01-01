@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: Diggaren
+  description: API for fetching current and previous tracks from SverigesRadio with Spotify links
+  version: 1.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/malmuniversity/Diggaren/1.0.0
+  - url: http://localhost:7070
+    description: Local development server
+paths:
+  /track/current/{channelId}:
+    get:
+      summary: Get current track
+      description: Returns the currently playing track for a radio channel
+      parameters:
+        - name: channelId
+          in: path
+          required: true
+          description: Radio channel identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Track info returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackInfo'
+              example:
+                title: A String Of Pearls
+                artist: The Glenn Miller Orchestra
+                spotifyLink: https://open.spotify.com/artist/6N1ycRllcq7fwHMdeTQD1z
+        '404':
+          description: Track not found
+  /track/previous/{channelId}:
+    get:
+      summary: Get previous track
+      description: Returns the previously played track for a radio channel
+      parameters:
+        - name: channelId
+          in: path
+          required: true
+          description: Radio channel identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Track info returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackInfo'
+              example:
+                title: Backspegeln
+                artist: Veronica Maggio
+                spotifyLink: https://open.spotify.com/artist/2OIWxN9xUhgUHkeUCWCaNs
+        '404':
+          description: Track not found
+components:
+  schemas:
+    TrackInfo:
+      type: object
+      properties:
+        title:
+          type: string
+          examples:
+            - A String Of Pearls
+        artist:
+          type: string
+          examples:
+            - The Glenn Miller Orchestra
+        spotifyLink:
+          type: string
+          format: uri
+          examples:
+            - https://open.spotify.com/artist/6N1ycRllcq7fwHMdeTQD1z
