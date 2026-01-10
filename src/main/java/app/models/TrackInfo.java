@@ -7,7 +7,7 @@ public class TrackInfo {
     private String artist;
     private Instant playedAt;
     private String spotifyLink;
-    private String chanel;
+    private String channel;
 
     public String getSpotifyLink() {
         return spotifyLink;
@@ -42,15 +42,15 @@ public class TrackInfo {
         this.playedAt = playedAt;
     }
 
-    public String getChanel() {
-        return chanel;
+    public String getChannel() {
+        return channel;
     }
 
-    public void setChanel(String chanel) {
-        this.chanel = chanel;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
     public String toString() {
-        return title+" "+artist+" "+ playedAt +" "+chanel;
+        return title+" "+artist+" "+ playedAt +" "+ channel;
     }
 
 

@@ -18,10 +18,10 @@ public class RadioSverigeService {
             json= new JsonObject();
 
     }
-    public String getChanelName(String channelId) {
-        String chanelsURL="https://api.sr.se/api/v2/channels?format=json";
+    public String getChannelName(String channelId) {
+        String channelsURL="https://api.sr.se/api/v2/channels?format=json";
         try {
-            JsonObject json= util.get(chanelsURL);
+            JsonObject json= util.get(channelsURL);
             JsonArray jsonArray= json.getAsJsonArray("channels");
             for (JsonElement jsonElement:jsonArray) {
                 JsonObject channel=jsonElement.getAsJsonObject();
@@ -61,7 +61,7 @@ public class RadioSverigeService {
         currentTrack.setArtist(artist);
         currentTrack.setTitle(title);
         currentTrack.setPlayedAt(startTime);
-        currentTrack.setChanel(getChanelName(channelId));
+        currentTrack.setChannel(getChannelName(channelId));
         return currentTrack;
     }
     public TrackInfo getPreviousSong(String channelId) {
@@ -83,7 +83,7 @@ public class RadioSverigeService {
         prevTrack.setArtist(artist);
         prevTrack.setTitle(title);
         prevTrack.setPlayedAt(startTime);
-        prevTrack.setChanel(getChanelName(channelId));
+        prevTrack.setChannel(getChannelName(channelId));
         return prevTrack;
     }
 

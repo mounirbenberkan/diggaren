@@ -4,12 +4,12 @@ const baseURL= "http://localhost:7070";
 document.addEventListener("DOMContentLoaded",main);
 
 function main(){
-    const chanelSelect= document.querySelector("#kanal")
+    const channelSelect= document.querySelector("#kanal")
     const kanalKort = document.querySelectorAll(".kanal-kort");
     const indicators = document.querySelectorAll(".indicator");
     const carousel = document.querySelector("#kanal-carousel");
     
-    updateSong(chanelSelect.value);
+    updateSong(channelSelect.value);
     
     kanalKort.forEach((kort, index) => {
         kort.addEventListener("click", () => {
@@ -18,7 +18,7 @@ function main(){
             kanalKort.forEach(k => k.classList.remove("active"));
             kort.classList.add("active");
             
-            chanelSelect.value = kanalValue;
+            channelSelect.value = kanalValue;
             
             indicators.forEach(i => i.classList.remove("active"));
             indicators[index].classList.add("active");
@@ -75,13 +75,13 @@ function main(){
     });
 }
 
-async function retriveSong(selectedChanel) {
-    const respons= await fetch(`${baseURL}/track/previous/${selectedChanel}`);
+async function retriveSong(selectedChannel) {
+    const respons= await fetch(`${baseURL}/track/previous/${selectedChannel}`);
     return await respons.json();
 }
 
-async function updateSong(selectedChanel){
-    const songInfo=  await retriveSong(selectedChanel);
+async function updateSong(selectedChannel){
+    const songInfo=  await retriveSong(selectedChannel);
     let song= document.querySelector("#song");
     song.innerHTML= songInfo.title;
     let artist= document.querySelector("#artist");
