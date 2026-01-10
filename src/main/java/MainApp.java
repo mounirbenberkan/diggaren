@@ -36,6 +36,7 @@ public class MainApp {
                 ctx.status(404);
                 return;
             }
+            System.out.println(track.getPlayedAt().toString());
             ctx.json(track);
         });
         app.get("/track/previous/{channelId}", ctx -> {

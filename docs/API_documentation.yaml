@@ -29,8 +29,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TrackInfo'
               example:
+                channel: P1
                 title: A String Of Pearls
                 artist: The Glenn Miller Orchestra
+                playedAt: 2026-01-10T13:07:24Z
                 spotifyLink: https://open.spotify.com/artist/6N1ycRllcq7fwHMdeTQD1z
         '404':
           description: Track not found
@@ -53,8 +55,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TrackInfo'
               example:
+                channel: P2
                 title: Backspegeln
                 artist: Veronica Maggio
+                playedAt: 2026-01-10T12:33:45Z
                 spotifyLink: https://open.spotify.com/artist/2OIWxN9xUhgUHkeUCWCaNs
         '404':
           description: Track not found
@@ -63,6 +67,10 @@ components:
     TrackInfo:
       type: object
       properties:
+        channel:
+          type: string
+          examples:
+            - P1
         title:
           type: string
           examples:
@@ -71,6 +79,11 @@ components:
           type: string
           examples:
             - The Glenn Miller Orchestra
+        playedAt:
+          type: string
+          format: date-time
+          examples:
+            - 2026-01-10T12:33:45Z
         spotifyLink:
           type: string
           format: uri
