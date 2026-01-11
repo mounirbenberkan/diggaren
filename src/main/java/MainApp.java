@@ -29,18 +29,18 @@ public class MainApp {
         app.get("/", ctx -> {
             ctx.result("Song API is running");
         });
-        app.get("/track/current/{chanelId}", ctx -> {
-            String chanelId = ctx.pathParam("chanelId");
-            TrackInfo track = songService.getTrackWithSpotifyLink(chanelId,true);
+        app.get("/track/current/{channelId}", ctx -> {
+            String channelId = ctx.pathParam("channelId");
+            TrackInfo track = songService.getTrackWithSpotifyLink(channelId,true);
             if (track == null) {
                 ctx.status(404);
                 return;
             }
             ctx.json(track);
         });
-        app.get("/track/previous/{chanelId}", ctx -> {
-            String chanelId = ctx.pathParam("chanelId");
-            TrackInfo track = songService.getTrackWithSpotifyLink(chanelId,false);
+        app.get("/track/previous/{channelId}", ctx -> {
+            String channelId = ctx.pathParam("chanelId");
+            TrackInfo track = songService.getTrackWithSpotifyLink(channelId,false);
             if (track == null) {
                 ctx.status(404);
                 return;
