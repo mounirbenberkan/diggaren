@@ -39,7 +39,7 @@ public class MainApp {
             ctx.json(track);
         });
         app.get("/track/previous/{channelId}", ctx -> {
-            String channelId = ctx.pathParam("chanelId");
+            String channelId = ctx.pathParam("channelId");
             TrackInfo track = songService.getTrackWithSpotifyLink(channelId,false);
             if (track == null) {
                 ctx.status(404);
